@@ -7,7 +7,8 @@ import {
   CLEAR_LOCATION,
   SEARCH_CITY,
   CLEAR_CITY,
-  SET_ERROR
+  SET_ERROR,
+  SET_UNITS
 } from './types';
 
 const openWeatherAppId = 'cdfea722819791da220d38ee898a116c';
@@ -16,7 +17,8 @@ const WeatherState = props => {
   const initialState = {
     city: {},
     cityError: '',
-    location: ''
+    location: '',
+    selectedUnits: 'C'
   };
 
   const [state, dispatch] = useReducer(WeatherReducer, initialState);
@@ -35,6 +37,7 @@ const WeatherState = props => {
 
   const clearCity = () => dispatch({ type: CLEAR_CITY });
   const setUserLocation = location => dispatch({ type: SET_LOCATION, payload: location });
+  const setUnits = units => dispatch({ type: SET_UNITS, payload: units });
   const clearUserLocation = () => dispatch({ type: CLEAR_LOCATION });
 
   return (
@@ -43,8 +46,10 @@ const WeatherState = props => {
         city: state.city,
         cityError: state.cityError,
         location: state.location,
+        selectedUnits: state.selectedUnits,
         searchCity,
         setUserLocation,
+        setUnits,
         clearUserLocation,
         clearCity
       }}>

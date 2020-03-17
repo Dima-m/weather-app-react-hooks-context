@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { weatherContext } from '../context/weatherContext';
 
-import { CityInput } from './style';
+import { CityInput } from '../styles';
 
 export const Search = () => {
   const { searchCity, clearUserLocation, location } = useContext(weatherContext);
   const [text, setText] = useState('');
-  
-  const onChange = e => {        
+
+  const onChange = e => {
     clearUserLocation();
     setText(e.target.value);
   };
@@ -17,8 +17,8 @@ export const Search = () => {
     if (!text) {
       return;
     }
-    
-    searchCity((location || text), 'metric');
+
+    searchCity(location || text, 'metric');
   };
 
   return (
@@ -27,7 +27,7 @@ export const Search = () => {
         <CityInput
           type='text'
           value={location || text}
-          placeholder="Type city"
+          placeholder='Type city'
           onChange={onChange}
           autoFocus
         />

@@ -1,8 +1,14 @@
-import { SET_LOCATION, CLEAR_LOCATION, SEARCH_CITY, CLEAR_CITY, SET_ERROR } from './types';
+import {
+  SET_LOCATION,
+  SET_UNITS,
+  CLEAR_LOCATION,
+  SEARCH_CITY,
+  CLEAR_CITY,
+  SET_ERROR
+} from './types';
 
 export default (state, action) => {
   switch (action.type) {
-
     case SEARCH_CITY:
       return {
         ...state,
@@ -14,7 +20,13 @@ export default (state, action) => {
         ...state,
         location: action.payload
       };
-  
+
+    case SET_UNITS:
+      return {
+        ...state,
+        selectedUnits: action.payload
+      };
+
     case CLEAR_LOCATION:
       return {
         ...state,
